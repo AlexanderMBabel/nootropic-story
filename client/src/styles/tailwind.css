@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Modak&family=Poppins:wght@200;400;600&display=swap');
+@tailwind components;
+@tailwind utilities;
+@tailwind base;
+
+/* Fonts  */
+
+.font-modak {
+  font-family: 'Modak';
+}
+
+.font-poppins {
+  font-family: 'Poppins';
+}
+
+/* primary: {
+    main: '#11ABC1',
+  },
+  secondary: {
+    main: '#ee7979',
+  },
+  info: {
+    main: '#cae7df',
+  },
+  accent: {
+    main: '#f4abaa',
+  },
+  nuetral: {
+    main: '#f7f4e9', */
+
+color-primary {
+  color: #11abc1;
+}
+
+color-secondary {
+  color: #ee7979;
+}
