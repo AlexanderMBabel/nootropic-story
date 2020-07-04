@@ -15,7 +15,8 @@
     "tailwindcss": "^1.4.6"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "build:styles": "tailwind build src/styles/tailwind.css -o src/styles/index.css",
+    "start": "npm run build:styles && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
