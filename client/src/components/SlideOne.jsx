@@ -1,8 +1,7 @@
 import React from 'react';
 
-import LandingButton from '../components/LandingButton';
+import LandingButton from './LandingButton';
 import { makeStyles } from '@material-ui/core/styles';
-import LandingSlider from '../components/LandingSlider';
 
 const useStyles = makeStyles((theme) => ({
   landing: {
@@ -42,13 +41,22 @@ const useStyles = makeStyles((theme) => ({
   },
   [theme.breakpoints.up('xl')]: {},
 }));
-const Landing = () => {
+const SlideOne = () => {
   const classes = useStyles();
   return (
-    <div className='flex p-4 items-center justify-center'>
-      <LandingSlider />
+    <div
+      className={`rounded shadow flex items-center justify-evenly ${classes.landing}  `}>
+      <div className={classes.blurb}>
+        <p>Indepently tested</p>
+        <p>purity garenteed</p>
+        <p></p>
+      </div>
+      <h4 className={`self-end ${classes.best}`}>
+        cognative potential optimization
+      </h4>
+      <LandingButton>Shop Now</LandingButton>
     </div>
   );
 };
 
-export default Landing;
+export default SlideOne;

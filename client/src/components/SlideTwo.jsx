@@ -2,13 +2,12 @@ import React from 'react';
 
 import LandingButton from '../components/LandingButton';
 import { makeStyles } from '@material-ui/core/styles';
-import LandingSlider from '../components/LandingSlider';
 
 const useStyles = makeStyles((theme) => ({
   landing: {
     width: '95vw',
     height: '88vh',
-    backgroundImage: 'url(analyze.svg)',
+    backgroundImage: 'url(fly.svg)',
     backgroundRepeat: 'no-repeat',
   },
   best: {
@@ -42,13 +41,24 @@ const useStyles = makeStyles((theme) => ({
   },
   [theme.breakpoints.up('xl')]: {},
 }));
-const Landing = () => {
+const SlideTwo = () => {
   const classes = useStyles();
   return (
     <div className='flex p-4 items-center justify-center'>
-      <LandingSlider />
+      <div
+        className={`rounded shadow flex items-center justify-evenly ${classes.landing}  `}>
+        <div className={classes.blurb}>
+          <p>Indepently tested</p>
+          <p>purity garenteed</p>
+          <p></p>
+        </div>
+        <h4 className={`self-end ${classes.best}`}>
+          cognative potential optimization
+        </h4>
+        <LandingButton>Shop Now</LandingButton>
+      </div>
     </div>
   );
 };
 
-export default Landing;
+export default SlideTwo;
