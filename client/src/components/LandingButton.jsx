@@ -5,14 +5,15 @@ import { makeStyles } from '@material-ui/styles';
 const useStyles = makeStyles({
   root: {
     color: 'white',
-    padding: '10px 50px',
+    padding: '15px 50px',
+    margin: 0,
   },
 });
 
-const LandingButton = ({ children }) => {
+const LandingButton = ({ children, color }) => {
   const classes = useStyles();
   return (
-    <Button variant='contained' color='primary' className={classes.root}>
+    <Button variant='contained' color={color} className={classes.root}>
       {children}
     </Button>
   );

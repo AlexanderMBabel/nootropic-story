@@ -6,6 +6,7 @@ import About from './pages/About';
 import NavBar from './components/NavBar';
 import Shipping from './pages/Shipping';
 import SideNav from './components/SideNav';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route exact path='/Shipping' component={Shipping} />
         <Route exact path='/About' component={About} />
       </Switch>
+      <Footer />
     </div>
   );
 }

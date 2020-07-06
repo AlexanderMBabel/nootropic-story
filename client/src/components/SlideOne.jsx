@@ -44,17 +44,19 @@ const useStyles = makeStyles((theme) => ({
 const SlideOne = () => {
   const classes = useStyles();
   return (
-    <div
-      className={`rounded shadow flex items-center justify-evenly ${classes.landing}  `}>
-      <div className={classes.blurb}>
-        <p>Indepently tested</p>
-        <p>purity garenteed</p>
-        <p></p>
+    <div>
+      <div
+        className={`rounded shadow flex items-center justify-evenly ${classes.landing}  `}>
+        <div className={classes.blurb}>
+          <p>Indepently tested</p>
+          <p>purity garenteed</p>
+          <p></p>
+        </div>
+        <h4 className={`self-end ${classes.best}`}>
+          cognative potential optimization
+        </h4>
+        <LandingButton>Shop Now</LandingButton>
       </div>
-      <h4 className={`self-end ${classes.best}`}>
-        cognative potential optimization
-      </h4>
-      <LandingButton>Shop Now</LandingButton>
     </div>
   );
 };
