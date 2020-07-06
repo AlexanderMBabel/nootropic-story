@@ -21,9 +21,6 @@ const useStyles = makeStyles((theme) => ({
       border: 'none',
     },
   },
-  topNav: {
-    display: 'none',
-  },
 
   [theme.breakpoints.up('xs')]: {
     icon: {
@@ -36,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
     menu: {
       display: 'block',
     },
-    TopNav: {
+    topNav: {
       display: 'none',
     },
   },
@@ -50,7 +47,9 @@ const useStyles = makeStyles((theme) => ({
     menu: {
       display: 'none',
     },
-    TopNav: 'block',
+    topNav: {
+      display: 'flex',
+    },
   },
 
   // icon: {

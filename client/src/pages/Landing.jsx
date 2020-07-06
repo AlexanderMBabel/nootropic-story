@@ -3,6 +3,7 @@ import React from 'react';
 import LandingButton from '../components/LandingButton';
 import { makeStyles } from '@material-ui/core/styles';
 import LandingSlider from '../components/LandingSlider';
+import BestSellers from '../components/BestSellers';
 
 const useStyles = makeStyles((theme) => ({
   landing: {
@@ -45,8 +46,9 @@ const useStyles = makeStyles((theme) => ({
 const Landing = () => {
   const classes = useStyles();
   return (
-    <div className='flex p-4 items-center justify-center'>
+    <div className='flex flex-col p-4 items-center justify-center'>
       <LandingSlider />
+      <BestSellers />
     </div>
   );
 };

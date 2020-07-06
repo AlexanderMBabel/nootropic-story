@@ -19,7 +19,7 @@ const Logo = () => {
   const classes = useStyles();
   return (
     <div className='flex items-center justify-center '>
-      <img src='tree.png' alt='logo' className={classes.logo} />
+      {/* <img src='tree.png' alt='logo' className={classes.logo} /> */}
       <p className={classes.companyName}>NEWME</p>
     </div>
   );
