@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useContext } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Landing from './pages/Landing';
 import Shop from './pages/Shop';
@@ -7,8 +7,33 @@ import NavBar from './components/NavBar';
 import Shipping from './pages/Shipping';
 import SideNav from './components/SideNav';
 import Footer from './components/Footer';
+import axios from 'axios';
+import Product from './pages/Product';
+import { AppContext } from './context/app.context';
+import { TOGGLE_LOADING, ADD_ALERT } from './reducers/types';
 
 function App() {
+  const { state, dispatch } = useContext(AppContext);
+  useEffect(() => {
+    axios.interceptors.request.use(
+      function (config) {
+        dispatch({ type: TOGGLE_LOADING });
+        return config;
+      },
+      function (err) {
+        dispatch({ type: ADD_ALERT, payload: err });
+      }
+    );
+    axios.interceptors.response.use(
+      function (data) {
+        dispatch({ type: TOGGLE_LOADING });
+        return data;
+      },
+      function (err) {
+        dispatch({ type: ADD_ALERT, payload: err });
+      }
+    );
+  }, []);
   return (
     <div className='App'>
       <NavBar />
@@ -17,7 +42,20 @@ function App() {
       <Switch>
         <Route exact path='/' component={Landing} />
         <Route exact path='/Shop' component={Shop} />
-        <Route exact path='/Shop/:category' render={()=><Shop />}
+        <Route
+          exact
+          path='/Shop/:category'
+          render={(routeProps) => (
+            <Shop category={routeProps.match.params.category} />
+          )}
+        />
+        <Route
+          exact
+          path='/product/:product'
+          render={(routeProp) => (
+            <Product product={routeProp.match.params.product} />
+          )}
+        />
         <Route exact path='/Shipping' component={Shipping} />
         <Route exact path='/About' component={About} />
       </Switch>

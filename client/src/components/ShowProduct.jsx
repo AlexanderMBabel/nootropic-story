@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
   Card,
   CardContent,
@@ -10,6 +10,8 @@ import {
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Skeleton from 'react-loading-skeleton';
+import { AppContext } from '../context/app.context';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   media: {
@@ -22,8 +24,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ShowProduct = ({ productData, loading }) => {
+const ShowProduct = ({ productData }) => {
   const { image, product, sizes, prices } = productData;
+  const { state } = useContext(AppContext);
+  const { loading } = state;
   const classes = useStyles();
   return (
     <Card className='m-2 w-1/3 lg:w-1/5 flex flex-col justify-between'>
@@ -45,9 +49,11 @@ const ShowProduct = ({ productData, loading }) => {
 
         <CardActionArea className={classes.actions}>
           <CardActions>
-            <Button size='small' color='primary'>
-              Buy Now
-            </Button>
+            <Link to={`/product/${product}`}>
+              <Button size='small' color='primary'>
+                Buy Now
+              </Button>
+            </Link>
           </CardActions>
         </CardActionArea>
       </CardContent>

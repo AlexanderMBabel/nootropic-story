@@ -1,5 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   logo: {
@@ -20,7 +21,9 @@ const Logo = () => {
   return (
     <div className='flex items-center justify-center '>
       {/* <img src='tree.png' alt='logo' className={classes.logo} /> */}
-      <p className={classes.companyName}>NEWME</p>
+      <Link to='/'>
+        <p className={classes.companyName}>NEWME</p>
+      </Link>
     </div>
   );
 };

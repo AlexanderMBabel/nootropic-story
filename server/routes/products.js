@@ -45,4 +45,12 @@ router.get('/category', (req, res) => {
     .catch((err) => res.status(500).json({ errors: err }));
 });
 
+/** GET product by name */
+router.get('/get_product', (req, res) => {
+  const product = req.query.product;
+
+  Products.findOne({ product: product })
+    .then((products) => res.json(products))
+    .catch((err) => res.status(500).json({ errors: err }));
+});
 module.exports = router;

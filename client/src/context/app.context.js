@@ -5,6 +5,8 @@ const initialState = {
   drawerIsOpen: false,
   cart: [],
   isLoggedIn: false,
+  loading: false,
+  alerts: [],
 };
 
 export const AppContext = createContext();

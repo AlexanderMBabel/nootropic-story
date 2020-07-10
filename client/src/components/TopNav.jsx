@@ -1,5 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import { Button } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -21,10 +23,18 @@ const TopNav = ({ className }) => {
   const classes = useStyles();
   return (
     <div className={`${classes.container} ${className}`}>
-      <p className={classes.link}>Life Extension</p>
-      <p className={classes.link}>Cognative</p>
-      <p className={classes.link}>Mood</p>
-      <p className={classes.link}>Essiential</p>
+      <Link to='/Shop/longevity'>
+        <Button className={classes.link}>Life Extension</Button>
+      </Link>
+      <Link to='/Shop/cognitive'>
+        <Button className={classes.link}>Cognitive</Button>
+      </Link>
+      <Link to='/Shop/mood'>
+        <Button className={classes.link}>Mood</Button>
+      </Link>
+      <Link to='/Shop/essential'>
+        <Button className={classes.link}>Essential</Button>
+      </Link>
     </div>
   );
 };

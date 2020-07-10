@@ -11,6 +11,7 @@ import {
   AccordionDetails,
   Divider,
 } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 const useStyles = makeStyles({
   list: {
     width: 250,
@@ -30,25 +31,47 @@ const SideNav = () => {
       onOpen={() => dispatch({ type: TOGGLE_DRAWER })}
       onClose={() => dispatch({ type: TOGGLE_DRAWER })}>
       <List>
-        <ListItem>New Releases</ListItem>
-        <ListItem>Best Sellers</ListItem>
-        <ListItem>Stacks</ListItem>
+        <ListItem>
+          <Link to='/Shop/new'>New Releases</Link>
+        </ListItem>
+        <ListItem>
+          <Link to='/Shop/best'>Best Sellers</Link>
+        </ListItem>
+        <ListItem>
+          <Link to='/Stacks'>Stacks</Link>
+        </ListItem>
         <Accordion>
           <AccordionSummary>Catagories</AccordionSummary>
           <AccordionDetails>
             <List>
-              <ListItem>Life Extension</ListItem>
-              <ListItem>Cognative Enhancement</ListItem>
-              <ListItem>Mood Balance</ListItem>
-              <ListItem>Essential</ListItem>
+              <ListItem>
+                <Link to='/Shop/longevity'>Life Extension</Link>
+              </ListItem>
+              <ListItem>
+                <Link to='/Shop/cognitive'>Cognitive Enhancement</Link>
+              </ListItem>
+              <ListItem>
+                <Link to='/Shop/mood'>Mood Balance</Link>
+              </ListItem>
+              <ListItem>
+                <Link to='/Shop/essential'>Essential</Link>
+              </ListItem>
             </List>
           </AccordionDetails>
         </Accordion>
         <Divider />
-        <ListItem>About Us</ListItem>
-        <ListItem>Contact</ListItem>
-        <ListItem>Shipping</ListItem>
-        <ListItem>FAQs</ListItem>
+        <ListItem>
+          <Link to='/about'>About Us</Link>
+        </ListItem>
+        <ListItem>
+          <Link to='/contact'>Contact</Link>
+        </ListItem>
+        <ListItem>
+          <Link to='/shipping'>Shipping</Link>
+        </ListItem>
+        <ListItem>
+          <Link tot='/faq'>FAQs</Link>
+        </ListItem>
       </List>
     </SwipeableDrawer>
   );
