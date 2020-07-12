@@ -61,10 +61,8 @@ const categoryBlurbs = {
 const Shop = ({ category }) => {
   const [products, setProducts] = useState([]);
   const [errors, setErrors] = useState([]);
-  const [loading, setLoading] = useState(false);
-  console.log(products);
+
   useEffect(() => {
-    setLoading(true);
     const uri = category
       ? process.env.REACT_APP_PRODUCT_DB + `category/?category=${category}`
       : process.env.REACT_APP_PRODUCT_DB;
@@ -72,10 +70,9 @@ const Shop = ({ category }) => {
       .get(uri)
       .then((res) => {
         setProducts(res.data);
-        setLoading(false);
       })
       .catch((err) => setErrors([...errors, err.errors]));
-  }, [category]);
+  }, [category, errors]);
   const classes = useStyles();
   return (
     <div className='w-full'>

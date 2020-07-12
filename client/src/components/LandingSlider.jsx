@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Carousel from 'react-material-ui-carousel';
-import SlideOne from './SlideOne';
-import SlideTwo from './SlideTwo';
+
 import SlideThree from './SlideThree';
 import SlideOneRe from './SlideOneRe';
 import SlideTwoRe from './SlideTwoRe';

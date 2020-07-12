@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import BestSellerSkeleton from './BestSellerSkeleton';
+
 import ShowProduct from './ShowProduct';
 
 const BestSellers = () => {
@@ -16,7 +16,7 @@ const BestSellers = () => {
         setLoading(false);
       })
       .catch((err) => {
-        setErrors([...errors, err.errors.message]);
+        setErrors((errors) => [...errors, err.errors.message]);
       });
   }, []);
 

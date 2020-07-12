@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
-import { makeStyles } from '@material-ui/core/styles';
+
 import { AppContext } from '../context/app.context';
 import { TOGGLE_DRAWER } from '../reducers/types';
 import {
@@ -12,14 +12,6 @@ import {
   Divider,
 } from '@material-ui/core';
 import { Link } from 'react-router-dom';
-const useStyles = makeStyles({
-  list: {
-    width: 250,
-  },
-  fullList: {
-    width: 'auto',
-  },
-});
 
 const SideNav = () => {
   const { state, dispatch } = useContext(AppContext);
@@ -61,16 +53,16 @@ const SideNav = () => {
         </Accordion>
         <Divider />
         <ListItem>
-          <Link to='/about'>About Us</Link>
+          <Link to='/About'>About Us</Link>
         </ListItem>
         <ListItem>
-          <Link to='/contact'>Contact</Link>
+          <Link to='/Contact'>Contact</Link>
         </ListItem>
         <ListItem>
-          <Link to='/shipping'>Shipping</Link>
+          <Link to='/Shipping'>Shipping</Link>
         </ListItem>
         <ListItem>
-          <Link tot='/faq'>FAQs</Link>
+          <Link to='/Faq'>FAQs</Link>
         </ListItem>
       </List>
     </SwipeableDrawer>

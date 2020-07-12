@@ -9,6 +9,7 @@ import { AppContext } from '../context/app.context';
 import { TOGGLE_DRAWER } from '../reducers/types';
 import { IconButton } from '@material-ui/core';
 import TopNav from './TopNav';
+import { Link } from 'react-router-dom';
 const useStyles = makeStyles((theme) => ({
   toolbar: {
     display: 'flex',
@@ -21,12 +22,35 @@ const useStyles = makeStyles((theme) => ({
       border: 'none',
     },
   },
-
+  iconButton: {
+    position: 'relative',
+    '&:focus': {
+      outline: 'none',
+    },
+  },
+  cartNumber: {
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    width: 20,
+    height: 20,
+    borderRadius: '50%',
+    background: theme.palette.primary.main,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    zIndex: 10,
+    color: 'white',
+    '& p': {
+      fontFamily: 'Poppins',
+      fontSize: '1rem',
+    },
+  },
   [theme.breakpoints.up('xs')]: {
     icon: {
       color: theme.palette.secondary.dark,
       margin: 5,
-      fontSize: 20,
+      fontSize: 25,
     },
     toolbar: {},
     logo: {},
@@ -42,7 +66,7 @@ const useStyles = makeStyles((theme) => ({
     icon: {
       color: theme.palette.secondary.dark,
       margin: 5,
-      fontSize: 20,
+      fontSize: 25,
     },
     menu: {
       display: 'none',
@@ -62,15 +86,20 @@ const useStyles = makeStyles((theme) => ({
 const NavBar = () => {
   const classes = useStyles();
   const { state, dispatch } = useContext(AppContext);
+  const { cart } = state;
+  const numOfItems = cart.length;
 
   const toggleDrawer = () => {
     dispatch({ type: TOGGLE_DRAWER });
   };
   return (
-    <AppBar position='static' color='nuetral'>
+    <AppBar position='static' color='transparent'>
       <Toolbar className={classes.toolbar}>
-        <IconButton disableFocusRipple={true} className={classes.menu}>
-          <RiMenu5Line className={classes.menu} onClick={toggleDrawer} />
+        <IconButton
+          disableFocusRipple={true}
+          className={classes.menu}
+          onClick={toggleDrawer}>
+          <RiMenu5Line className={classes.menu} />
         </IconButton>
         <div className='flex items-center justify-center'>
           <Logo />
@@ -78,12 +107,19 @@ const NavBar = () => {
         </div>
 
         <div className='flex'>
-          <IconButton>
+          <IconButton className={classes.iconButton}>
             <GoSearch className={classes.icon} />
           </IconButton>
-          <IconButton>
-            <MdShoppingCart className={classes.icon} />
-          </IconButton>
+          <Link to='/Cart'>
+            <IconButton className={classes.iconButton}>
+              {numOfItems > 0 && (
+                <div className={classes.cartNumber}>
+                  <p>{numOfItems}</p>
+                </div>
+              )}
+              <MdShoppingCart className={classes.icon} />
+            </IconButton>
+          </Link>
         </div>
       </Toolbar>
     </AppBar>

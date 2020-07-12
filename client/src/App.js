@@ -11,9 +11,10 @@ import axios from 'axios';
 import Product from './pages/Product';
 import { AppContext } from './context/app.context';
 import { TOGGLE_LOADING, ADD_ALERT } from './reducers/types';
+import Cart from './pages/Cart';
 
 function App() {
-  const { state, dispatch } = useContext(AppContext);
+  const { dispatch } = useContext(AppContext);
   useEffect(() => {
     axios.interceptors.request.use(
       function (config) {
@@ -33,7 +34,7 @@ function App() {
         dispatch({ type: ADD_ALERT, payload: err });
       }
     );
-  }, []);
+  }, [dispatch]);
   return (
     <div className='App'>
       <NavBar />
@@ -58,6 +59,7 @@ function App() {
         />
         <Route exact path='/Shipping' component={Shipping} />
         <Route exact path='/About' component={About} />
+        <Route exact path='/Cart' component={Cart} />
       </Switch>
       <Footer />
     </div>

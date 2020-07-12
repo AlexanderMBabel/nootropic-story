@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const ShowProduct = ({ productData }) => {
-  const { image, product, sizes, prices } = productData;
+  const { image, product, prices } = productData;
   const { state } = useContext(AppContext);
   const { loading } = state;
   const classes = useStyles();

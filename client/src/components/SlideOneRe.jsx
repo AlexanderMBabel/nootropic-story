@@ -1,7 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import LandingButton from './LandingButton';
-import { Button } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -30,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-around',
-    color: '#333333',
+
     width: '33%',
     height: '40vh',
     alignSelf: 'center',
