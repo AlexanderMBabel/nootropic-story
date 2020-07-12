@@ -78,13 +78,13 @@ const Shop = ({ category }) => {
     <div className='w-full'>
       <div className={classes.container}>
         <h1>{categoryBlurbs[category].title}</h1>
-        <p>{categoryBlurbs[category].description}</p>
+        <div>{categoryBlurbs[category].description}</div>
       </div>
       <div
         className='flex w-full flex-wrap justify-center'
         style={{ marginTop: -100 }}>
         {products.map((product) => (
-          <ShowProduct productData={product} />
+          <ShowProduct productData={product} key={product.product} />
         ))}
       </div>
     </div>

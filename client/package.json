@@ -19,7 +19,8 @@
     "react-responsive-carousel": "^3.2.9",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
-    "tailwindcss": "^1.4.6"
+    "tailwindcss": "^1.4.6",
+    "uuid": "^8.2.0"
   },
   "scripts": {
     "build:styles": "tailwind build src/styles/tailwind.css -o src/styles/index.css",

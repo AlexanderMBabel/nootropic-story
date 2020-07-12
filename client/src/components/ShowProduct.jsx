@@ -4,7 +4,6 @@ import {
   CardContent,
   CardMedia,
   Button,
-  CardActionArea,
   CardActions,
   Divider,
 } from '@material-ui/core';
@@ -47,15 +46,15 @@ const ShowProduct = ({ productData }) => {
           </p>
         )}
 
-        <CardActionArea className={classes.actions}>
-          <CardActions>
-            <Link to={`/product/${product}`}>
-              <Button size='small' color='primary'>
-                Buy Now
-              </Button>
-            </Link>
-          </CardActions>
-        </CardActionArea>
+        {/* <CardActionArea className={classes.actions}> */}
+        <CardActions className={classes.actions}>
+          <Link to={`/product/${product}`}>
+            <Button size='small' color='primary'>
+              Buy Now
+            </Button>
+          </Link>
+        </CardActions>
+        {/* </CardActionArea> */}
       </CardContent>
     </Card>
   );

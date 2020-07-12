@@ -7,11 +7,23 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import { ADD_TO_CART } from '../reducers/types';
 import AddToCartButton from '../components/AddToCartButton';
+import { v4 as uuid } from 'uuid';
 
 const useStyles = makeStyles((theme) => ({
   selectedSize: {
     backgroundColor: theme.palette.primary.main,
     color: 'white',
+    '&:active': {
+      outline: 'none',
+    },
+    '&:focus': {
+      outline: 'none',
+    },
+  },
+  buy: {
+    '&:focus': {
+      outline: 'none',
+    },
   },
 }));
 const Product = ({ product }) => {
@@ -34,6 +46,7 @@ const Product = ({ product }) => {
         price: productData.prices[selectedSize],
         image: productData.image,
         quantity: 1,
+        id: uuid(),
       },
     });
   };

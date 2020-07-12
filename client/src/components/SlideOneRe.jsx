@@ -37,10 +37,12 @@ const useStyles = makeStyles((theme) => ({
     color: 'white',
 
     '& h1': {
-      fontFamily: 'Galada',
+      // fontFamily: 'Galada',
+      fontWeight: 'semibold',
+      fontSize: '3.5rem',
     },
     '& p ': {
-      fontSize: '2.5rem',
+      fontSize: '1.5rem',
     },
   },
   blurb2: {
@@ -95,7 +97,7 @@ const SlideOneRe = () => {
     <div className={classes.container}>
       <div className={classes.slide}>
         <div className={classes.blurb}>
-          <h1 className='text-gray-800 tracking-wider'>Personalized Stack</h1>
+          <h1 className='text-gray-800 tracking-tighter'>Personalized Stack</h1>
 
           <p className='expert'>
             Our experts will put together a stack to your exact specifications

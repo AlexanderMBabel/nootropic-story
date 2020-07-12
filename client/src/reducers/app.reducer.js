@@ -9,7 +9,7 @@ import {
 } from './types';
 
 export function appReducer(state, action) {
-  let tempCart;
+  let tempCart, index;
   switch (action.type) {
     case TOGGLE_DRAWER:
       return { ...state, drawerIsOpen: !state.drawerIsOpen };
@@ -23,13 +23,12 @@ export function appReducer(state, action) {
       return { ...state, cart: [...state.cart, action.payload] };
     case REMOVE_FROM_CART:
       tempCart = state.cart;
-      tempCart.splice(action.payload, 1);
+      index = tempCart.findIndex((cart) => cart.name === action.payload);
+      tempCart.splice(index, 1);
       return { ...state, cart: tempCart };
     case UPDATE_CART_QUANTITY:
       tempCart = state.cart;
-      let index = tempCart.findIndex(
-        (cart) => cart.name === action.payload.name
-      );
+      index = tempCart.findIndex((cart) => cart.name === action.payload.name);
       tempCart[index].quantity = action.payload.quantity;
       return { ...state, cart: tempCart };
 

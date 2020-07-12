@@ -34,18 +34,18 @@ const useStyles = makeStyles((theme) => ({
     alignSelf: 'flex-start',
     paddingTop: 50,
     '& h1': {
-      fontFamily: 'Galada',
+      // fontFamily: 'Galada',
       fontSize: '4rem',
 
       letterSpacing: 5,
     },
     '& p': {
-      fontSize: '2rem',
+      fontSize: '1.5rem',
     },
   },
   svg: {
-    height: '50%',
-    width: '60%',
+    height: '60%',
+    width: '80%',
   },
   button: {
     justifySelf: 'flex-start',

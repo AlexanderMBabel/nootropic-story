@@ -16,6 +16,11 @@ const useStyles = makeStyles((theme) => ({
     '&:hover': {
       color: theme.palette.primary.light,
     },
+    '&:focus': {
+      outline: 'none',
+      background: theme.palette.primary.main,
+      color: 'white',
+    },
   },
 }));
 

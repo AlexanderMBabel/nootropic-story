@@ -12,9 +12,21 @@ import Product from './pages/Product';
 import { AppContext } from './context/app.context';
 import { TOGGLE_LOADING, ADD_ALERT } from './reducers/types';
 import Cart from './pages/Cart';
+import { makeStyles } from '@material-ui/core';
+
+const useStyles = makeStyles((theme) => ({
+  app: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    alignItems: 'space-between',
+    height: '90vh',
+  },
+}));
 
 function App() {
   const { dispatch } = useContext(AppContext);
+  const classes = useStyles();
   useEffect(() => {
     axios.interceptors.request.use(
       function (config) {
@@ -36,7 +48,7 @@ function App() {
     );
   }, [dispatch]);
   return (
-    <div className='App'>
+    <div className={classes.app}>
       <NavBar />
       <SideNav />
 

@@ -10,7 +10,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import App from './App';
 
 ReactDOM.render(
-  <React.StrictMode>
+  <React.Fragment>
     <ThemeProvider theme={theme}>
       <AppContextProvider>
         <Router>
@@ -18,6 +18,6 @@ ReactDOM.render(
         </Router>
       </AppContextProvider>
     </ThemeProvider>
-  </React.StrictMode>,
+  </React.Fragment>,
   document.getElementById('root')
 );

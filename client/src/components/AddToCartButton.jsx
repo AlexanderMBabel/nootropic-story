@@ -207,7 +207,7 @@ const AddToCartButton = ({ onClick }) => {
           </Link>
           <div id='added'>
             <svg
-              class='cart-icon-1'
+              className='cart-icon-1'
               version='1.1'
               width='150px'
               height='150px'

@@ -21,7 +21,11 @@ const BestSellers = () => {
   }, []);
 
   const displayProducts = products.map((product) => (
-    <ShowProduct productData={product} loading={loading} />
+    <ShowProduct
+      productData={product}
+      loading={loading}
+      key={product.product}
+    />
   ));
   return (
     <div className='w-full flex flex-wrap justify-center'>
