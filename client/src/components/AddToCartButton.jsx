@@ -125,7 +125,7 @@ const useStyles = makeStyles((theme) => ({
     cursor: 'pointer',
     transition: 'all 0.5s ease-out',
     '& #added': {
-      animation: '$addedOut 1500ms',
+      animation: '$addedOut 1000ms',
       animationFillMode: 'forwards',
       alignSelf: 'center',
       textAlign: 'center',
@@ -142,10 +142,10 @@ const useStyles = makeStyles((theme) => ({
         width: '70px',
         height: '70px',
         '& .check-1': {
-          animation: '$checked 750ms forwards',
+          animation: '$checked 500ms forwards',
         },
         '& .cart-plus-1': {
-          animation: '$added 750ms forwards',
+          animation: '$added 500ms forwards',
         },
       },
     },
@@ -153,7 +153,7 @@ const useStyles = makeStyles((theme) => ({
     '& #check-out': {
       padding: '2rem',
       position: 'relative',
-      animation: '$checkoutIn 1500ms',
+      animation: '$checkoutIn 1000ms',
       animationFillMode: 'forwards',
       display: 'flex',
       alignItems: 'center',
@@ -165,7 +165,7 @@ const useStyles = makeStyles((theme) => ({
     '& #continue': {
       padding: '2rem',
       position: 'relative',
-      animation: '$continueIn 1500ms',
+      animation: '$continueIn 1000ms',
       animationFillMode: 'forwards',
       display: 'flex',
       alignItems: 'center',

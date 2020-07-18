@@ -1,15 +1,17 @@
-import React, { useContext } from 'react';
-import { AppBar, Toolbar } from '@material-ui/core';
+import React, { useContext, useState } from 'react';
+
+import { AppBar, Toolbar, IconButton, Popover } from '@material-ui/core';
 import Logo from './Logo';
-import { MdShoppingCart } from 'react-icons/md';
+import { MdShoppingCart, MdAccountCircle } from 'react-icons/md';
 import { GoSearch } from 'react-icons/go';
 import { makeStyles } from '@material-ui/core/styles';
 import { RiMenu5Line } from 'react-icons/ri';
 import { AppContext } from '../context/app.context';
 import { TOGGLE_DRAWER } from '../reducers/types';
-import { IconButton } from '@material-ui/core';
 import TopNav from './TopNav';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+import CartPreview from './CartPreview';
+
 const useStyles = makeStyles((theme) => ({
   toolbar: {
     display: 'flex',
@@ -28,10 +30,15 @@ const useStyles = makeStyles((theme) => ({
       outline: 'none',
     },
   },
+  menu: {
+    '&:focus': {
+      outline: 'none',
+    },
+  },
   cartNumber: {
     position: 'absolute',
-    top: 0,
-    right: 0,
+    top: 7,
+    right: 7,
     width: 20,
     height: 20,
     borderRadius: '50%',
@@ -75,6 +82,9 @@ const useStyles = makeStyles((theme) => ({
       display: 'flex',
     },
   },
+  popover: {
+    pointerEvents: 'none',
+  },
 
   // icon: {
   //   color: theme.palette.secondary.dark,
@@ -84,10 +94,28 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const NavBar = () => {
+  const history = useHistory();
   const classes = useStyles();
   const { state, dispatch } = useContext(AppContext);
   const { cart } = state;
   const numOfItems = cart.length;
+  const [anchorEl, setAnchorEl] = useState(null);
+
+  const handleCartHover = (e) => {
+    setAnchorEl(e.currentTarget);
+  };
+
+  const handleCartClick = () => {
+    history.push('/Cart');
+  };
+
+  const cartPopoverOpen = Boolean(anchorEl);
+
+  // const cartPopoverId = cartPopoverOpen ? 'cart-popover' : undefined;
+
+  const handleCartPopoverClose = () => {
+    setAnchorEl(null);
+  };
 
   const toggleDrawer = () => {
     dispatch({ type: TOGGLE_DRAWER });
@@ -107,21 +135,45 @@ const NavBar = () => {
         </div>
 
         <div className='flex'>
+          <IconButton>
+            <MdAccountCircle className={classes.icon} />
+          </IconButton>
           <IconButton className={classes.iconButton}>
             <GoSearch className={classes.icon} />
           </IconButton>
-          <Link to='/Cart'>
-            <IconButton className={classes.iconButton}>
-              {numOfItems > 0 && (
-                <div className={classes.cartNumber}>
-                  <p>{numOfItems}</p>
-                </div>
-              )}
-              <MdShoppingCart className={classes.icon} />
-            </IconButton>
-          </Link>
+
+          <IconButton
+            aria-owns={cartPopoverOpen ? 'cart-popover-id' : undefined}
+            aria-haspopup='true'
+            className={classes.iconButton}
+            onMouseEnter={handleCartHover}
+            onMouseLeave={handleCartPopoverClose}
+            onClick={handleCartClick}
+
+            // onMouseLeave={handleCartPopoverClose}
+          >
+            {numOfItems > 0 && (
+              <div className={classes.cartNumber}>
+                <p>{numOfItems}</p>
+              </div>
+            )}
+            <MdShoppingCart className={classes.icon} />
+          </IconButton>
         </div>
       </Toolbar>
+      <Popover
+        className={classes.popover}
+        id='cart-popover-id'
+        open={cartPopoverOpen}
+        anchorEl={anchorEl}
+        onClose={handleCartPopoverClose}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+        transformOrigin={{ vertical: 'top', horizontal: 'center' }}
+        disableRestoreFocus>
+        <div className='flex items-center justify-center'>
+          <CartPreview />
+        </div>
+      </Popover>
     </AppBar>
   );
 };

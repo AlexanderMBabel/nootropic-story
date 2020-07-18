@@ -6,6 +6,7 @@ import {
   ADD_TO_CART,
   REMOVE_FROM_CART,
   UPDATE_CART_QUANTITY,
+  UPDATE_STACK,
 } from './types';
 
 export function appReducer(state, action) {
@@ -31,6 +32,8 @@ export function appReducer(state, action) {
       index = tempCart.findIndex((cart) => cart.name === action.payload.name);
       tempCart[index].quantity = action.payload.quantity;
       return { ...state, cart: tempCart };
+    case UPDATE_STACK:
+      return { ...state, stack: action.payload };
 
     default:
       return state;

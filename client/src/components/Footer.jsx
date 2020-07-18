@@ -8,6 +8,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'space-around',
     fontSize: '1rem',
     justifySelf: 'flex-end',
+
     fontWeight: 200,
     '& div': {
       padding: 10,

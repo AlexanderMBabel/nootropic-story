@@ -24,6 +24,9 @@ const SideNav = () => {
       onClose={() => dispatch({ type: TOGGLE_DRAWER })}>
       <List>
         <ListItem>
+          <Link to='/Shop/sale'>Sale</Link>
+        </ListItem>
+        <ListItem>
           <Link to='/Shop/new'>New Releases</Link>
         </ListItem>
         <ListItem>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="292.39551mm"
+   height="292.39215mm"
+   viewBox="0 0 292.39551 292.39215"
+   version="1.1"
+   id="svg444"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
+   sodipodi:docname="bottle.svg">
+  <defs
+     id="defs438" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.35"
+     inkscape:cx="586.8442"
+     inkscape:cy="532.55209"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1016"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata441">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(49.435862,2.6543944)">
+    <g
+       transform="matrix(0.05637953,0,0,-0.05637953,-676.03232,333.20354)"
+       id="g82">
+      <path
+         inkscape:connector-curvature="0"
+         id="path84"
+         style="fill:#60cad3;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         d="m 16300.1,3364 c 0,-1432.09 -1161,-2593.05 -2593.1,-2593.05 -1432.1,0 -2593.1,1160.96 -2593.1,2593.05 0,1432.14 1161,2593.09 2593.1,2593.09 1432.1,0 2593.1,-1160.95 2593.1,-2593.09" />
+    </g>
+    <g
+       transform="matrix(0.04929575,0,0,-0.04929575,-676.03232,333.20354)"
+       id="g170">
+      <path
+         inkscape:connector-curvature="0"
+         id="path172"
+         style="fill:#f14566;fill-opacity:1;fill-rule:evenodd;stroke:none"
+         d="M 15053.3,4779.08 H 16300 v 109.2 h -1246.7 v -109.2 0" />
+    </g>
+    <g
+       transform="matrix(0.05044475,0,0,-0.05044475,-676.03232,333.20354)"
+       id="g174">
+      <path
+         inkscape:connector-curvature="0"
+         id="path176"
+         style="fill:#141113;fill-opacity:1;fill-rule:evenodd;stroke:none"
+         d="m 14503.7,5714.14 h 1631.8 c 45.3,0 86.5,-16.78 116.2,-43.85 29.8,-27.06 48.3,-64.48 48.3,-105.67 v -468.76 c 0,-41.05 -18.5,-78.4 -48.3,-105.53 v -0.14 c -29.7,-27.07 -70.9,-43.85 -116.2,-43.85 h -107.1 v -197.28 h -49.8 -1367.8 v 197.28 h -107.1 c -45.1,0 -86.1,16.78 -116.1,43.85 l -0.1,0.14 c -29.8,27.13 -48.2,64.55 -48.2,105.53 v 468.76 c 0,40.98 18.4,78.4 48.2,105.53 v 0.14 c 29.7,27.07 70.9,43.85 116.2,43.85" />
+    </g>
+    <g
+       transform="matrix(0.05111891,0,0,-0.05111891,-676.03232,333.20354)"
+       id="g178">
+      <path
+         inkscape:connector-curvature="0"
+         id="path180"
+         style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         d="m 16156.7,4479.67 c -88.5,79.64 -210.5,128.98 -344.8,128.98 h -1388.7 c -134.3,0 -256.3,-49.34 -344.7,-128.98 -88.4,-79.57 -143.4,-189.44 -143.4,-310.28 V 2220.92 c 0,-120.83 55,-230.7 143.4,-310.34 88.4,-79.5 210.4,-128.98 344.7,-128.98 h 1388.7 c 134.3,0 256.3,49.48 344.8,128.98 88.4,79.64 143.3,189.51 143.3,310.34 v 1948.47 c 0,120.84 -54.9,230.71 -143.3,310.28" />
+    </g>
+    <g
+       transform="matrix(0.05111891,0,0,-0.05111891,-676.03232,333.20354)"
+       id="g182">
+      <path
+         inkscape:connector-curvature="0"
+         id="path184"
+         style="fill:#f14566;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         d="M 13935.1,4158.56 V 2771.22 c 18.7,-8.63 39.3,-13.39 60.9,-13.39 h 2243.2 c 21.6,0 42.2,4.76 60.8,13.39 v 1387.34 c -18.6,8.62 -39.2,13.45 -60.8,13.45 H 13996 c -21.6,0 -42.2,-4.83 -60.9,-13.45" />
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="52.012951"
+       y="153.66634"
+       id="text472"><tspan
+         sodipodi:role="line"
+         id="tspan470"
+         x="52.012951"
+         y="153.66634"
+         style="font-size:16.93333244px;fill:#ffffff;stroke-width:0.26458332">Your Stack</tspan></text>
+  </g>
+</svg>

@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect, useCallback } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { FaTrashAlt } from 'react-icons/fa';
 import { MdPayment } from 'react-icons/md';
@@ -78,13 +78,30 @@ const Cart = () => {
   const [shipping, setShipping] = useState();
   const [tax, setTax] = useState();
   const [total, setTotal] = useState();
+  const getSubTotal = useCallback(() => {
+    let subtotal = cart.reduce((acc, next) => acc + Number(next.price), 0);
+    return subtotal.toFixed(2);
+  }, [cart]);
+  const getTax = useCallback(() => {
+    let subTotal = getSubTotal();
+    return (subTotal * 0.06).toFixed(2);
+  }, [getSubTotal]);
+  const getShipping = () => {
+    return '5.99';
+  };
+  const getTotal = useCallback(() => {
+    let subtotal = Number(getSubTotal());
+    let tax = Number(getTax());
+    let shipping = Number(getShipping());
+    return (subtotal + tax + shipping).toFixed(2);
+  }, [getSubTotal, getTax]);
 
   useEffect(() => {
     setSubtotal(getSubTotal());
     setShipping(getShipping());
     setTax(getTax());
     setTotal(getTotal());
-  }, [cart]);
+  }, [cart, getSubTotal, getTotal, getTax]);
 
   const handleQuantityChange = (e) => {
     dispatch({
@@ -101,23 +118,7 @@ const Cart = () => {
       payload: e.target.name,
     });
   };
-  const getSubTotal = () => {
-    let subtotal = cart.reduce((acc, next) => acc + Number(next.price), 0);
-    return subtotal.toFixed(2);
-  };
-  const getTax = () => {
-    let subTotal = getSubTotal();
-    return (subTotal * 0.06).toFixed(2);
-  };
-  const getShipping = () => {
-    return '5.99';
-  };
-  const getTotal = () => {
-    let subtotal = Number(getSubTotal());
-    let tax = Number(getTax());
-    let shipping = Number(getShipping());
-    return (subtotal + tax + shipping).toFixed(2);
-  };
+
   return (
     <div className={classes.container}>
       {cart.length < 1 ? (

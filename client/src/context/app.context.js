@@ -7,6 +7,8 @@ const initialState = {
   isLoggedIn: false,
   loading: false,
   alerts: [],
+  snackIsOpen: false,
+  stack: [],
 };
 
 export const AppContext = createContext();

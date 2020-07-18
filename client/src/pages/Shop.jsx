@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import axios from 'axios';
 import ShowProduct from '../components/ShowProduct';
+import { AppContext } from '../context/app.context';
+import { ADD_ALERT } from '../reducers/types';
 const useStyles = makeStyles((theme) => ({
   container: {
     width: '100%',
@@ -56,23 +58,45 @@ const categoryBlurbs = {
     ),
     // '  Improvements in working memory, the ability to grasp new concepts, and information processing boosts are common',
   },
+  new: {
+    title: 'New Arrivals',
+    description: 'New Supplements to our collection',
+  },
+  best: {
+    title: 'Best Sellers',
+    description: 'Check out or most popular supplements',
+  },
+  sale: {
+    title: 'On Sale',
+    description: 'Current sale items up to 30% off',
+  },
 };
 
 const Shop = ({ category }) => {
   const [products, setProducts] = useState([]);
-  const [errors, setErrors] = useState([]);
+  const { dispatch } = useContext(AppContext);
 
   useEffect(() => {
-    const uri = category
-      ? process.env.REACT_APP_PRODUCT_DB + `category/?category=${category}`
-      : process.env.REACT_APP_PRODUCT_DB;
+    let uri;
+    if (category === 'best') {
+      uri = process.env.REACT_APP_PRODUCT_DB + 'top';
+    } else if (category === 'sale') {
+      uri = process.env.REACT_APP_PRODUCT_DB + 'sale';
+    } else if (category === 'new') {
+      uri = process.env.REACT_APP_PRODUCT_DB + 'new';
+    } else {
+      uri = category
+        ? process.env.REACT_APP_PRODUCT_DB + `category/?category=${category}`
+        : process.env.REACT_APP_PRODUCT_DB;
+    }
+
     axios
       .get(uri)
       .then((res) => {
         setProducts(res.data);
       })
-      .catch((err) => setErrors([...errors, err.errors]));
-  }, [category, errors]);
+      .catch((err) => dispatch({ type: ADD_ALERT, payload: err }));
+  }, [category, dispatch]);
   const classes = useStyles();
   return (
     <div className='w-full'>

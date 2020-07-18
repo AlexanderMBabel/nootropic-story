@@ -4,19 +4,20 @@ import LandingButton from './LandingButton';
 
 const useStyles = makeStyles((theme) => ({
   container: {
-    width: '90vw',
+    width: '100%',
     height: '80vh',
 
     backgroundColor: 'white',
     margin: 0,
+    padding: 0,
   },
   slide: {
     backgroundColor: '#ffffff',
     backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 1600 800'%3E%3Cg stroke='%23000' stroke-width='66.7' stroke-opacity='0.05' %3E%3Ccircle fill='%232b92ff' cx='0' cy='0' r='1800'/%3E%3Ccircle fill='%235389f7' cx='0' cy='0' r='1700'/%3E%3Ccircle fill='%236c80ed' cx='0' cy='0' r='1600'/%3E%3Ccircle fill='%237e76e2' cx='0' cy='0' r='1500'/%3E%3Ccircle fill='%238d6dd6' cx='0' cy='0' r='1400'/%3E%3Ccircle fill='%239963c9' cx='0' cy='0' r='1300'/%3E%3Ccircle fill='%23a259bb' cx='0' cy='0' r='1200'/%3E%3Ccircle fill='%23a94fac' cx='0' cy='0' r='1100'/%3E%3Ccircle fill='%23ad459d' cx='0' cy='0' r='1000'/%3E%3Ccircle fill='%23b03c8e' cx='0' cy='0' r='900'/%3E%3Ccircle fill='%23b1337e' cx='0' cy='0' r='800'/%3E%3Ccircle fill='%23b02a6f' cx='0' cy='0' r='700'/%3E%3Ccircle fill='%23ae2360' cx='0' cy='0' r='600'/%3E%3Ccircle fill='%23aa1d51' cx='0' cy='0' r='500'/%3E%3Ccircle fill='%23a51943' cx='0' cy='0' r='400'/%3E%3Ccircle fill='%239f1835' cx='0' cy='0' r='300'/%3E%3Ccircle fill='%23971928' cx='0' cy='0' r='200'/%3E%3Ccircle fill='%238f1b1b' cx='0' cy='0' r='100'/%3E%3C/g%3E%3C/svg%3E")`,
     backgroundAttachment: 'fixed',
     backgroundSize: 'cover',
-    borderRadius: 10,
-    boxShadow: '0 2px 5px rgba(44, 44, 44, 0.7)',
+    // borderRadius: 10,
+    // boxShadow: '0 2px 5px rgba(44, 44, 44, 0.7)',
     width: '100%',
     height: '100%',
     display: 'flex',

@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
     paddingLeft: 20,
   },
   link: {
-    padding: '0 5px',
+    padding: '0 8px',
     cursor: 'pointer',
 
     '&:hover': {
@@ -29,7 +29,7 @@ const TopNav = ({ className }) => {
   return (
     <div className={`${classes.container} ${className}`}>
       <Link to='/Shop/longevity'>
-        <Button className={classes.link}>Life Extension</Button>
+        <Button className={classes.link}>Longevity</Button>
       </Link>
       <Link to='/Shop/cognitive'>
         <Button className={classes.link}>Cognitive</Button>
@@ -39,6 +39,12 @@ const TopNav = ({ className }) => {
       </Link>
       <Link to='/Shop/essential'>
         <Button className={classes.link}>Essential</Button>
+      </Link>
+      <Link to='/Guides'>
+        <Button className={classes.link}>Guides</Button>
+      </Link>
+      <Link to='/Stack'>
+        <Button className={classes.link}>Stack</Button>
       </Link>
     </div>
   );

@@ -4,11 +4,12 @@ import LandingButton from './LandingButton';
 
 const useStyles = makeStyles((theme) => ({
   container: {
-    width: '90vw',
+    width: '98vw',
     height: '80vh',
 
     backgroundColor: 'white',
     margin: 0,
+    padding: 0,
   },
   slide: {
     backgroundColor: '#ffffff',
@@ -16,8 +17,9 @@ const useStyles = makeStyles((theme) => ({
     // backgroundAttachment: 'fixed',
     backgroundRepeat: 'no-repeat',
     backgroundSize: '80%',
-    borderRadius: 10,
-    boxShadow: '0 2px 5px rgba(44, 44, 44, 0.7)',
+    backgroundPosition: 'left bottom',
+    // borderRadius: 10,
+    // boxShadow: '0 2px 5px rgba(44, 44, 44, 0.7)',
     width: '100%',
     height: '100%',
     display: 'flex',

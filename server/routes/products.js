@@ -6,6 +6,7 @@ const Products = require('../models/products');
 router.get('/', (req, res) => {
   Products.find()
     .then((products) => {
+      console.log(products);
       res.json(products);
     })
     .catch((err) => {
@@ -28,6 +29,17 @@ router.get('/top', (req, res) => {
 /** GET sale products */
 router.get('/sale', (req, res) => {
   Products.find({ sale: true })
+    .then((products) => {
+      res.json(products);
+    })
+    .catch((err) => {
+      res.status(500).json({ errors: err });
+    });
+});
+
+/** GET new products */
+router.get('/new', (req, res) => {
+  Products.find({ new: true })
     .then((products) => {
       res.json(products);
     })

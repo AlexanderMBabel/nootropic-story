@@ -10,22 +10,27 @@ import Footer from './components/Footer';
 import axios from 'axios';
 import Product from './pages/Product';
 import { AppContext } from './context/app.context';
-import { TOGGLE_LOADING, ADD_ALERT } from './reducers/types';
+import { TOGGLE_LOADING, ADD_ALERT, CLEAR_ALERTS } from './reducers/types';
 import Cart from './pages/Cart';
-import { makeStyles } from '@material-ui/core';
+import { makeStyles, Snackbar, IconButton } from '@material-ui/core';
+import { FaWindowClose } from 'react-icons/fa';
+import Stack from './pages/Stack';
+import CreateStack from './pages/CreateStack';
+import ReviewStack from './pages/ReviewStack';
 
 const useStyles = makeStyles((theme) => ({
   app: {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
-    alignItems: 'space-between',
-    height: '90vh',
+    // alignItems: 'space-between',
+    height: '100vh',
   },
 }));
 
 function App() {
-  const { dispatch } = useContext(AppContext);
+  const { state, dispatch } = useContext(AppContext);
+  const { alerts } = state;
   const classes = useStyles();
   useEffect(() => {
     axios.interceptors.request.use(
@@ -47,6 +52,10 @@ function App() {
       }
     );
   }, [dispatch]);
+
+  const handleSnackClose = () => {
+    dispatch({ type: CLEAR_ALERTS });
+  };
   return (
     <div className={classes.app}>
       <NavBar />
@@ -72,8 +81,28 @@ function App() {
         <Route exact path='/Shipping' component={Shipping} />
         <Route exact path='/About' component={About} />
         <Route exact path='/Cart' component={Cart} />
+        <Route exact path='/Stack' component={Stack} />
+        <Route exact path='/Stack/create' component={CreateStack} />
+        <Route exact path='/Stack/review' component={ReviewStack} />
       </Switch>
       <Footer />
+      <Snackbar
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
+        open={alerts.length > 0}
+        autoHideDuration={4000}
+        onClose={handleSnackClose}
+        message={alerts.map((alert) => (
+          <p>{alert}</p>
+        ))}
+        action={
+          <IconButton
+            size='small'
+            aria-label='close'
+            onClick={handleSnackClose}>
+            <FaWindowClose />
+          </IconButton>
+        }
+      />
     </div>
   );
 }

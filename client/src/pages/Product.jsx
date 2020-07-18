@@ -4,7 +4,7 @@ import { AppContext } from '../context/app.context';
 import Skeleton from 'react-loading-skeleton';
 import { Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-
+import { ADD_ALERT } from '../reducers/types';
 import { ADD_TO_CART } from '../reducers/types';
 import AddToCartButton from '../components/AddToCartButton';
 import { v4 as uuid } from 'uuid';
@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 const Product = ({ product }) => {
   const [productData, setProductData] = useState(null);
-  const [errors, setErrors] = useState([]);
+
   const [selectedSize, setSelectedSize] = useState(0);
   const { state, dispatch } = useContext(AppContext);
   const { loading } = state;
@@ -58,8 +58,8 @@ const Product = ({ product }) => {
       .then((res) => {
         setProductData(res.data);
       })
-      .catch((err) => setErrors((errors) => [...errors, err.errors]));
-  }, [product]);
+      .catch((err) => dispatch({ type: ADD_ALERT, payload: err }));
+  }, [product, dispatch]);
   return (
     <div className='flex p-4 items-center justify-center w-full'>
       <div className='flex rounded shadow justify-center items-center flex-col p-6 w-5/6'>

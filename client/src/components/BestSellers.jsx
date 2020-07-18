@@ -1,31 +1,26 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
-
+import { AppContext } from '../context/app.context';
+import { ADD_ALERT } from '../reducers/types';
 import ShowProduct from './ShowProduct';
 
 const BestSellers = () => {
   const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [errors, setErrors] = useState([]);
+
+  const { dispatch } = useContext(AppContext);
   useEffect(() => {
-    setLoading(true);
     axios
       .get(process.env.REACT_APP_PRODUCT_DB + 'top')
       .then((res) => {
         setProducts(res.data);
-        setLoading(false);
       })
       .catch((err) => {
-        setErrors((errors) => [...errors, err.errors.message]);
+        dispatch({ type: ADD_ALERT, payload: err });
       });
-  }, []);
+  }, [dispatch]);
 
   const displayProducts = products.map((product) => (
-    <ShowProduct
-      productData={product}
-      loading={loading}
-      key={product.product}
-    />
+    <ShowProduct productData={product} key={product.product} />
   ));
   return (
     <div className='w-full flex flex-wrap justify-center'>
