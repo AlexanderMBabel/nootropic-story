@@ -15,7 +15,7 @@ const BestSellers = () => {
         setProducts(res.data);
       })
       .catch((err) => {
-        dispatch({ type: ADD_ALERT, payload: err });
+        dispatch({ type: ADD_ALERT, payload: err.errors });
       });
   }, [dispatch]);
 

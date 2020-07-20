@@ -1,10 +1,11 @@
-import React, { useEffect, useState, useContext } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import React, { useEffect, useContext, useState } from 'react';
 import axios from 'axios';
-import ShowProduct from '../components/ShowProduct';
 import { AppContext } from '../context/app.context';
 import { ADD_ALERT } from '../reducers/types';
-const useStyles = makeStyles((theme) => ({
+import { makeStyles } from '@material-ui/core';
+import ShowProduct from './ShowProduct';
+
+const styles = makeStyles((theme) => ({
   container: {
     width: '100%',
     height: '40vh',
@@ -19,91 +20,31 @@ const useStyles = makeStyles((theme) => ({
     color: '#2d3748',
     '& h1': {
       fontSize: '2rem',
+      color: 'white',
     },
     '& p': {
       padding: '10px 20px',
     },
   },
 }));
-
-const categoryBlurbs = {
-  essential: {
-    title: 'Essential Supplements',
-    description: 'Supplements designed to boost or replace natural processes',
-  },
-  longevity: {
-    title: 'Life Extension',
-    description:
-      'A collection of supplements clinically proven to slow down the aging process',
-  },
-  mood: {
-    title: 'Mood Enhancement',
-    description:
-      'These supplements are clinically developed to gently improve and stabilize your mood.  ',
-  },
-  cognitive: {
-    title: 'Cognitive Boost',
-    description: (
-      <div>
-        <h4 className='text-center text-xl text-gray-700'>
-          Boost cognitive function
-        </h4>
-        <p className='text-center text-sm text-gray-800'>
-          One of the main reasons people take natural nootropics is so they can
-          think more clearly. This can include generating ideas or performing
-          more efficiently on challenging mental tasks. Experts call this group
-          of characteristics cognitive function.
-        </p>
-      </div>
-    ),
-    // '  Improvements in working memory, the ability to grasp new concepts, and information processing boosts are common',
-  },
-  new: {
-    title: 'New Arrivals',
-    description: 'New Supplements to our collection',
-  },
-  best: {
-    title: 'Best Sellers',
-    description: 'Check out or most popular supplements',
-  },
-  sale: {
-    title: 'On Sale',
-    description: 'Current sale items up to 30% off',
-  },
-};
-const Shop = ({ category }) => {
+const ProductSearch = ({ query }) => {
   const [products, setProducts] = useState([]);
   const { dispatch } = useContext(AppContext);
-
+  const classes = styles();
   useEffect(() => {
-    let uri;
-    if (category === 'all') {
-      uri = process.env.REACT_APP_PRODUCT_DB;
-    } else if (category === 'best') {
-      uri = process.env.REACT_APP_PRODUCT_DB + 'top';
-    } else if (category === 'sale') {
-      uri = process.env.REACT_APP_PRODUCT_DB + 'sale';
-    } else if (category === 'new') {
-      uri = process.env.REACT_APP_PRODUCT_DB + 'new';
-    } else {
-      uri = category
-        ? process.env.REACT_APP_PRODUCT_DB + `category/?category=${category}`
-        : process.env.REACT_APP_PRODUCT_DB;
-    }
-
     axios
-      .get(uri)
+      .get(process.env.REACT_APP_SEARCH, { params: { search: query } })
       .then((res) => {
+        console.log(res.data);
         setProducts(res.data);
       })
       .catch((err) => dispatch({ type: ADD_ALERT, payload: err.errors }));
-  }, [category, dispatch]);
-  const classes = useStyles();
+  }, [dispatch, query]);
   return (
     <div className='w-full'>
-      <div className={classes.container} title='container'>
-        <h1>{categoryBlurbs[category].title}</h1>
-        <div>{categoryBlurbs[category].description}</div>
+      <div className={classes.container}>
+        <p>Search results for</p>
+        <h1>{query}</h1>
       </div>
       <div
         className='flex w-full flex-wrap justify-center'
@@ -116,4 +57,4 @@ const Shop = ({ category }) => {
   );
 };
 
-export default Shop;
+export default ProductSearch;

@@ -11,6 +11,8 @@ import { TOGGLE_DRAWER } from '../reducers/types';
 import TopNav from './TopNav';
 import { useHistory } from 'react-router-dom';
 import CartPreview from './CartPreview';
+import Search from './Search';
+import Account from './Account';
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
@@ -100,21 +102,41 @@ const NavBar = () => {
   const { cart } = state;
   const numOfItems = cart.length;
   const [anchorEl, setAnchorEl] = useState(null);
+  const [searchAnchorEl, setSearchAnchorEl] = useState(null);
+  const [accountAnchorEl, setAccountAnchorEl] = useState(null);
 
   const handleCartHover = (e) => {
     setAnchorEl(e.currentTarget);
+  };
+
+  const handleSearchClick = (e) => {
+    setSearchAnchorEl(e.currentTarget);
   };
 
   const handleCartClick = () => {
     history.push('/Cart');
   };
 
+  const handleAccountClick = (e) => {
+    setAccountAnchorEl(e.currentTarget);
+  };
+
   const cartPopoverOpen = Boolean(anchorEl);
+  const searchPopoverOpen = Boolean(searchAnchorEl);
+  const accountPopoverOpen = Boolean(accountAnchorEl);
 
   // const cartPopoverId = cartPopoverOpen ? 'cart-popover' : undefined;
 
   const handleCartPopoverClose = () => {
     setAnchorEl(null);
+  };
+
+  const handleSearchPopoverClose = () => {
+    setSearchAnchorEl(null);
+  };
+
+  const handleAccountPopoverClose = () => {
+    setAccountAnchorEl(null);
   };
 
   const toggleDrawer = () => {
@@ -135,10 +157,16 @@ const NavBar = () => {
         </div>
 
         <div className='flex'>
-          <IconButton>
+          <IconButton
+            className={classes.iconButton}
+            onClick={handleAccountClick}
+            onClose={handleAccountPopoverClose}>
             <MdAccountCircle className={classes.icon} />
           </IconButton>
-          <IconButton className={classes.iconButton}>
+          <IconButton
+            className={classes.iconButton}
+            onClick={handleSearchClick}
+            onClose={handleSearchPopoverClose}>
             <GoSearch className={classes.icon} />
           </IconButton>
 
@@ -162,6 +190,17 @@ const NavBar = () => {
         </div>
       </Toolbar>
       <Popover
+        id='search-popover-id'
+        open={searchPopoverOpen}
+        anchorEl={searchAnchorEl}
+        onClose={handleSearchPopoverClose}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+        transformOrigin={{ vertical: 'top', horizontal: 'center' }}>
+        <div className='flex items-center justify-center'>
+          <Search />
+        </div>
+      </Popover>
+      <Popover
         className={classes.popover}
         id='cart-popover-id'
         open={cartPopoverOpen}
@@ -172,6 +211,18 @@ const NavBar = () => {
         disableRestoreFocus>
         <div className='flex items-center justify-center'>
           <CartPreview />
+        </div>
+      </Popover>
+      <Popover
+        id='account-popover-id'
+        open={accountPopoverOpen}
+        anchorEl={accountAnchorEl}
+        onClose={handleAccountPopoverClose}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+        transformOrigin={{ vertical: 'top', horizontal: 'center' }}
+        disableRestoreFocus>
+        <div className='flex items-center justify-center'>
+          <Account />
         </div>
       </Popover>
     </AppBar>

@@ -6,7 +6,6 @@ const Products = require('../models/products');
 router.get('/', (req, res) => {
   Products.find()
     .then((products) => {
-      console.log(products);
       res.json(products);
     })
     .catch((err) => {
@@ -64,5 +63,28 @@ router.get('/get_product', (req, res) => {
   Products.findOne({ product: product })
     .then((products) => res.json(products))
     .catch((err) => res.status(500).json({ errors: err }));
+});
+
+/** GET Stack price */
+router.get('/get_stack_price', async (req, res) => {
+  let stack = req.query.stack;
+
+  // stack = JSON.parse(stack);
+  let price = 0;
+
+  let promises = stack.map(async (s) => {
+    s = JSON.parse(s);
+    try {
+      let products = await Products.findOne({ product: s.supplement });
+      price += products.pricePerMg * s.amount;
+      return products.pricePerMg * s.amount;
+    } catch (err) {
+      res.status(500).json({ errors: 'could not find product' });
+    }
+  });
+
+  await Promise.all(promises);
+
+  res.json({ price });
 });
 module.exports = router;

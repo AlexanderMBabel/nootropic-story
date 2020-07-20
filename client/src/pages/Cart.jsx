@@ -1,9 +1,10 @@
 import React, { useContext, useState, useEffect, useCallback } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+
 import { FaTrashAlt } from 'react-icons/fa';
 import { MdPayment } from 'react-icons/md';
 import { UPDATE_CART_QUANTITY, REMOVE_FROM_CART } from '../reducers/types';
 import { Link } from 'react-router-dom';
+
 import {
   Paper,
   List,
@@ -19,65 +20,17 @@ import {
   InputLabel,
 } from '@material-ui/core';
 import { AppContext } from '../context/app.context';
-const useStyles = makeStyles((theme) => ({
-  container: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 10,
-  },
-  paper: {
-    padding: 20,
-  },
-  avatar: {
-    width: '200px',
-    height: '200px',
-    marginRight: 30,
-  },
-  prices: {
-    padding: 20,
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'flex-end',
-    '& p': {
-      fontSize: '2rem',
-    },
-  },
-  select: {
-    marginRight: 10,
-    marginTop: 20,
-    marginBottom: 20,
-  },
-  trash: {
-    marginRight: 5,
-  },
-  divider: {
-    width: '100%',
-  },
-  totals: {
-    padding: '30px 12px 12px 12px',
-    display: 'flex',
-    flexDirection: 'column',
-  },
-  checkOutBtn: {
-    justifySelf: 'center',
-  },
-  paperEmpty: {
-    padding: 50,
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-}));
+import { styles } from '../styles/cart.styles';
 
 const Cart = () => {
-  const classes = useStyles();
+  const classes = styles();
   const { state, dispatch } = useContext(AppContext);
   const { cart } = state;
   const [subtotal, setSubtotal] = useState();
   const [shipping, setShipping] = useState();
   const [tax, setTax] = useState();
   const [total, setTotal] = useState();
+  const [zip, setZip] = useState('');
   const getSubTotal = useCallback(() => {
     let subtotal = cart.reduce((acc, next) => acc + Number(next.price), 0);
     return subtotal.toFixed(2);
@@ -103,6 +56,11 @@ const Cart = () => {
     setTotal(getTotal());
   }, [cart, getSubTotal, getTotal, getTax]);
 
+  useEffect(() => {
+    fetch(process.env.REACT_APP_GEO_API)
+      .then((res) => res.json())
+      .then((res) => setZip(res.zipcode));
+  }, []);
   const handleQuantityChange = (e) => {
     dispatch({
       type: UPDATE_CART_QUANTITY,
@@ -140,7 +98,10 @@ const Cart = () => {
                   </ListItemAvatar>
                   <ListItemText primary={c.name} secondary={c.size} />
                   <div className={classes.prices}>
-                    <p>$ {(c.price * c.quantity).toFixed(2)}</p>
+                    <div>
+                      <p>$ {(c.price * c.quantity).toFixed(2)}</p>
+                      {/* {c.stack && <p>{c.stack}</p>} */}
+                    </div>
 
                     <FormControl variant='outlined' className={classes.select}>
                       <InputLabel id='quantity-label'>Quantity</InputLabel>
@@ -182,7 +143,7 @@ const Cart = () => {
               <p>${subtotal}</p>
             </div>
             <div className='flex items-center justify-between'>
-              <p className='text-gray-600'>Shipping:</p>
+              <p className='text-gray-600'>Shipping:{zip}</p>
               <p>$ {shipping}</p>
             </div>
             <div className='flex items-center justify-between'>

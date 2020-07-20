@@ -15,6 +15,10 @@ const productsSchema = new mongoose.Schema({
   top: Boolean,
   sale: Boolean,
   category: String,
+  new: Boolean,
+  maximumDosage: Number,
+  pricePerMg: Number,
+  keywords: Array,
 });
 
 module.exports = mongoose.model('Products', productsSchema);

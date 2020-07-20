@@ -17,6 +17,7 @@ import { FaWindowClose } from 'react-icons/fa';
 import Stack from './pages/Stack';
 import CreateStack from './pages/CreateStack';
 import ReviewStack from './pages/ReviewStack';
+import ProductSearch from './components/ProductSearch';
 
 const useStyles = makeStyles((theme) => ({
   app: {
@@ -48,7 +49,7 @@ function App() {
         return data;
       },
       function (err) {
-        dispatch({ type: ADD_ALERT, payload: err });
+        dispatch({ type: ADD_ALERT, payload: err.message });
       }
     );
   }, [dispatch]);
@@ -84,6 +85,13 @@ function App() {
         <Route exact path='/Stack' component={Stack} />
         <Route exact path='/Stack/create' component={CreateStack} />
         <Route exact path='/Stack/review' component={ReviewStack} />
+        <Route
+          exact
+          path='/Shop/Search/:query'
+          render={(routeProps) => (
+            <ProductSearch query={routeProps.match.params.query} />
+          )}
+        />
       </Switch>
       <Footer />
       <Snackbar
