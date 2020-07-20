@@ -12,6 +12,11 @@ const styles = makeStyles((theme) => ({
       outline: 'none',
     },
   },
+  modal: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 }));
 
 const Account = () => {
@@ -59,16 +64,18 @@ const Account = () => {
         </div>
       )}
       <Modal
+        className={classes.modal}
         open={signUpOpen}
         onClose={handleSignupClose}
-        aria-labeledby='signup-title'
+        aria-labelledby='signup-title'
         aria-describedby='signup-description'>
         <SignUpForm />
       </Modal>
       <Modal
+        className={classes.modal}
         open={loginOpen}
         onClose={handleLoginClose}
-        aria-labeledby='signup-title'
+        aria-labelledby='signup-title'
         aria-describedby='signup-description'>
         <LoginForm />
       </Modal>
