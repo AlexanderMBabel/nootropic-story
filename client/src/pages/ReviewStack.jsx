@@ -47,7 +47,7 @@ const ReviewStack = () => {
     let index = tempStackState.findIndex(
       (item) => item.supplement === supplement
     );
-    console.log(index);
+
     tempStackState.splice(index, 1);
 
     setStackState(tempStackState);
@@ -81,7 +81,7 @@ const ReviewStack = () => {
             }}
           />
         </FormControl>
-        <FormControl className={classes.formControl}>
+        <FormControl className={classes.formControlSelect}>
           <InputLabel id='amount-label'>Amount of doses</InputLabel>
           <Select
             label='Amount of pills'
@@ -118,7 +118,7 @@ const ReviewStack = () => {
 
           <div id='buttons' className={classes.buttons}>
             <Link to='/Stack/create'>
-              <Button size='medium' color='secondary' variant='outline'>
+              <Button size='medium' color='secondary' variant='outlined'>
                 ReBuild
               </Button>
             </Link>

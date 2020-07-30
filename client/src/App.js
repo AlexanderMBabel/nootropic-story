@@ -18,6 +18,8 @@ import Stack from './pages/Stack';
 import CreateStack from './pages/CreateStack';
 import ReviewStack from './pages/ReviewStack';
 import ProductSearch from './components/ProductSearch';
+import Information from './pages/Information';
+import Guides from './pages/Guides';
 
 const useStyles = makeStyles((theme) => ({
   app: {
@@ -92,6 +94,14 @@ function App() {
             <ProductSearch query={routeProps.match.params.query} />
           )}
         />
+        <Route
+          exact
+          path='/info/:type'
+          render={(routeProps) => (
+            <Information type={routeProps.match.params.type} />
+          )}
+        />
+        <Route exact path='/Guides' component={Guides} />
       </Switch>
       <Footer />
       <Snackbar

@@ -1,5 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   footer: {
@@ -17,35 +18,70 @@ const useStyles = makeStyles((theme) => ({
       },
     },
   },
+  column: {
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  linkItem: {
+    padding: 5,
+    '&:hover': {
+      letterSpacing: 3,
+    },
+  },
 }));
 const Footer = () => {
   const classes = useStyles();
   return (
     <footer className={classes.footer}>
-      <div>
-        <p>Shop All</p>
-        <p>Shop By Use</p>
-        <p>Shop By Type</p>
-        <p>Top Sellers</p>
-        <p>Sale Items</p>
-        <p>New Items</p>
+      <div className={classes.column}>
+        <Link className={classes.linkItem} to='/Shop'>
+          Shop All
+        </Link>
+        <Link className={classes.linkItem} to='/Shop/top'>
+          Top Sellers
+        </Link>
+        <Link className={classes.linkItem} to='/Shop/sale'>
+          Sale Items
+        </Link>
+        <Link className={classes.linkItem} to='/Shop/new'>
+          New Products
+        </Link>
       </div>
-      <div>
-        <p>Guide</p>
-        <p>Ask an expert</p>
-        <p>Create a stack</p>
+      <div className={classes.column}>
+        <Link className={classes.linkItem} to='/Guides'>
+          Guide
+        </Link>
+        <Link className={classes.linkItem} to='/Stack'>
+          Create a stack
+        </Link>
       </div>
-      <div>
-        <p>Terms and Conditions</p>
-        <p>Privacy Policy</p>
-        <p>Shipping Policy</p>
-        <p>Faqs</p>
-        <p>Payments</p>
-        <p>Lab Testing Results</p>
+      <div className={classes.column}>
+        <Link className={classes.linkItem} to='/info/term'>
+          Terms and Conditions
+        </Link>
+        <Link className={classes.linkItem} to='/info/privacy'>
+          Privacy Policy
+        </Link>
+        <Link className={classes.linkItem} to='/info/shipping'>
+          Shipping Policy
+        </Link>
+        <Link className={classes.linkItem} to='/info/faq'>
+          FAQS
+        </Link>
+        <Link className={classes.linkItem} to='/info/payments'>
+          Payments
+        </Link>
+        <Link className={classes.linkItem} to='/info/lab'>
+          Lab Testing Results
+        </Link>
       </div>
-      <div>
-        <p>Contact Us</p>
-        <p>Newsletter</p>
+      <div className={classes.column}>
+        <Link className={classes.linkItem} to='/contact'>
+          Contact
+        </Link>
+        <Link className={classes.linkItem} to='/news'>
+          Newsletter
+        </Link>
       </div>
     </footer>
   );

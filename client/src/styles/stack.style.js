@@ -75,7 +75,11 @@ export const styles = makeStyles((theme) => ({
     display: 'flex',
   },
   formGroup: {
-    padding: 20,
+    paddingTop: 20,
+    paddingButtom: 20,
+  },
+  formControlSelect: {
+    marginTop: 20,
   },
   select: {
     minWidth: '200px',

@@ -17,6 +17,9 @@ const styles = makeStyles((theme) => ({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  modalDiv: {
+    outline: 'none',
+  },
 }));
 
 const Account = () => {
@@ -69,7 +72,9 @@ const Account = () => {
         onClose={handleSignupClose}
         aria-labelledby='signup-title'
         aria-describedby='signup-description'>
-        <SignUpForm />
+        <div className={classes.modalDiv}>
+          <SignUpForm onClose={handleSignupClose} />
+        </div>
       </Modal>
       <Modal
         className={classes.modal}
@@ -77,7 +82,9 @@ const Account = () => {
         onClose={handleLoginClose}
         aria-labelledby='signup-title'
         aria-describedby='signup-description'>
-        <LoginForm />
+        <div className={classes.modalDiv}>
+          <LoginForm onClose={handleLoginClose} />
+        </div>
       </Modal>
     </div>
   );

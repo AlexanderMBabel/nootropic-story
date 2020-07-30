@@ -7,6 +7,7 @@ import {
   REMOVE_FROM_CART,
   UPDATE_CART_QUANTITY,
   UPDATE_STACK,
+  TOGGLE_LOGGEDIN,
 } from './types';
 
 export function appReducer(state, action) {
@@ -34,7 +35,8 @@ export function appReducer(state, action) {
       return { ...state, cart: tempCart };
     case UPDATE_STACK:
       return { ...state, stack: action.payload };
-
+    case TOGGLE_LOGGEDIN:
+      return { ...state, isLoggedIn: !state.isLoggedIn };
     default:
       return state;
   }
